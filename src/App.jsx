@@ -9,9 +9,9 @@ const App = () => (
         <div className="App">
             <main className="App_content">
                 <Switch>
-                    <Route path="/proposals/:proposalId">
+                    <Route path="/proposals/:talkId">
                         {({ match }) => (
-                            <ProposalDetailsPage talkId={match.params.proposalId}/>
+                            <ProposalDetailsPage talkId={match.params.talkId}/>
                         )}
                     </Route>
                     <Route path="/proposals">

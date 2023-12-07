@@ -4,13 +4,14 @@ import DetailsSection from "../DetailsSection";
 
 import "./ProposalDetails.css";
 
-const ProposalDetails = ({ talk }) => {
-    const { speaker, description } = talk;
+const ProposalDetails = ({talk}) => {
+    const { speaker, description, category } = talk;
+
     return (
         <div data-testid="proposal-details" className="ProposalDetails">
             <DetailsSection
                 className="ProposalDetails__speaker"
-                name="speaker"
+                name={speaker}
             >
                 <span className="ProposalDetails__speaker__value">
                     {speaker}
@@ -18,11 +19,11 @@ const ProposalDetails = ({ talk }) => {
             </DetailsSection>
             <DetailsSection
                 className="ProposalDetails__category"
-                name="category"
+                name={category}
             />
             <DetailsSection
                 className="ProposalDetails__description"
-                name="description"
+                name={description}
             >
                 <div className="ProposalDetails__description__value">
                     {description}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { getProposalList, setProposalStatus } from "./service";
+import { getProposalList } from "./service";
 
 import Loading from "../Loading";
 import Page from "../Page";
@@ -11,26 +11,18 @@ export const ProposalListPage = () => {
     const [proposals, setProposals] = useState([])
 
     useEffect(() => {
+        setIsLoading(true);
         getProposalList().then(proposals => {
             setProposals(proposals);
+            setIsLoading(false);
         });
     }, []);
 
-    const updateProposalStatus = (id, status) => {
-        setProposals((previousProposals) => {
-            return previousProposals.map(proposal =>
-                proposal.id === id ? { ...proposal, status } : proposal,
-            );
-        });
-        setProposalStatus(id, status);
-    };
-
     return (
         <Page title="Call for Papers">
-            <Loading/>
+            {isLoading && <Loading/>}
             <ProposalList
                 proposals={proposals}
-                onProposalStatusUpdate={() => {}}
             />
         </Page>
     );
